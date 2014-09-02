@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902031633) do
+ActiveRecord::Schema.define(version: 20140902043800) do
+
+  create_table "link_hits", force: true do |t|
+    t.string   "ip_address"
+    t.integer  "link_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "links", force: true do |t|
     t.string   "short_link"

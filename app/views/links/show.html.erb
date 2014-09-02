@@ -9,3 +9,13 @@
   <strong>Original link:</strong>
   <%= @link.original_link %>
 </p>
+
+<p>
+  <strong>Link hits:</strong>
+  <%= @link_hits.count %>
+</p>
+
+<h3>Accessed from following IP addresses</h3>
+<% @link_hits.each do |link_hit| %>
+  <%= link_hit.ip_address %> - <%= time_ago_in_words(link_hit.created_at) %> ago <br />
+<% end %>

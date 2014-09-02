@@ -1,11 +1,21 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: [:show, :edit, :update, :destroy]
+  before_action :set_link, only: [:show, :edit, :update, :destroy, :redirect_to_original_link]
 
-  def index
+  def home_page
     @link = Link.new 
   end
 
-  def show 
+  def index
+    @links = Link.all.includes(:link_hits)
+  end
+
+  def show
+    @link
+    @link_hits = @link.link_hits
+  end
+
+  def redirect_to_original_link
+    @link.link_hits.create(ip_address: current_ip)
     redirect_to @link.original_link 
   end
 
