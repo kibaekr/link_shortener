@@ -1,8 +1,7 @@
-<%= form_for(@link) do |f| %>
+<%= form_for @link, html: { class:"form-inline" }  do |f| %>
   <% if @link.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
-
       <ul>
       <% @link.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,11 +10,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :original_link %><br>
-    <%= f.text_field :original_link %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Shorten Link" , class: "btn btn-default" %>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="input-group">
+      <%= f.text_field :original_link, class: "form-control", placeholder: "http://www.amazon.com/", autofocus: true %>
+        <span class="input-group-btn">
+          <%= f.submit "Shorten link" , class: "btn btn-info" %>
+        </span>
+      </div>
+    </div>
   </div>
 <% end %>

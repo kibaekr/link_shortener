@@ -10,7 +10,6 @@ class LinksController < ApplicationController
   end
 
   def show
-    @link
     @link_hits = @link.link_hits
   end
 
@@ -27,7 +26,7 @@ class LinksController < ApplicationController
         format.html { redirect_to show_link_path(@link.short_link), notice: "Link was successfully created! #{@link.original_link} has been shortened to #{request.env["HTTP_HOST"]}/#{@link.short_link}" }
         # format.json { render :show, status: :created, location: @link }
       else
-        format.html { render :new }
+        format.html { render :home_page }
         format.json { render json: @link.errors, status: :unprocessable_entity }
       end
     end
