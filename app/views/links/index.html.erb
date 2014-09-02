@@ -1,3 +1,18 @@
-<% @links.each do |link| %>
-  <%= link_to link.short_link, "/#{link.short_link}", target: "_blank" %> (<%= link.original_link %>) - <%= link_to link.link_hits.count.to_s + " hits", show_link_path(link.short_link) %> <br />
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Short Link</th>
+      <th>Original Link</th>
+      <th>Link Hits</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @links.each do |link| %>
+    <tr>
+      <td><%= link_to (root_url+link.short_link), "/#{link.short_link}", target: "_blank" %></td>
+      <td><%= link.original_link %></td>
+      <td><%= link_to link.link_hits.count.to_s + " hits", show_link_path(link.short_link) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

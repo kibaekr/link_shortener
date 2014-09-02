@@ -2,12 +2,12 @@
 
 <p>
   <strong>Short link:</strong>
-  <%= @link.short_link %>
+  <%= link_to (root_url+@link.short_link), "/#{@link.short_link}", target: "_blank" %>
 </p>
 
 <p>
   <strong>Original link:</strong>
-  <%= @link.original_link %>
+  <%= link_to @link.original_link, @link.original_link, target: "_blank" %>
 </p>
 
 <p>
