@@ -24,7 +24,7 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       if @link.save
-        format.html { redirect_to root_url, notice: "Link was successfully created. #{@link.original_link} shortened to #{@link.short_link}" }
+        format.html { redirect_to show_link_path(@link.short_link), notice: "Link was successfully created! #{@link.original_link} has been shortened to #{request.env["HTTP_HOST"]}/#{@link.short_link}" }
         # format.json { render :show, status: :created, location: @link }
       else
         format.html { render :new }
